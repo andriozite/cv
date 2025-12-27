@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CV Andrian Permana | NIGHT CITY MOBILE</title>
+    <title>CV Andrian Permana</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -61,7 +58,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Scanlines - Lebih halus di mobile */
         .scanlines {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -71,7 +67,6 @@
             pointer-events: none;
         }
 
-        /* Boot Screen */
         #boot-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -83,7 +78,6 @@
             justify-content: flex-end;
         }
 
-        /* Cyberpunk Button Style */
         .btn-cp {
             background: rgba(252, 238, 10, 0.1);
             border: 1px solid #fcee0a;
@@ -104,22 +98,18 @@
             transform: scale(0.98);
         }
 
-        /* Glitch Text Simple (Mobile Optimized) */
         .glitch-text {
             text-shadow: 2px 2px 0px #ff003c, -2px -2px 0px #00f0ff;
         }
 
-        /* Terminal Scrollbar */
         .terminal-scroll::-webkit-scrollbar { width: 4px; background: #111; }
         .terminal-scroll::-webkit-scrollbar-thumb { background: #333; }
 
-        /* Smooth Scroll */
         html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="pb-20 md:pb-0"> <!-- Padding bottom only for mobile nav -->
+<body class="pb-20 md:pb-0">
 
-    <!-- BOOT TERMINAL -->
     <div id="boot-screen">
         <div id="terminal-content" class="font-mono text-cp-green text-xs space-y-1 mb-4"></div>
         <div class="h-1 w-full bg-cp-green animate-pulse"></div>
@@ -127,10 +117,8 @@
 
     <div class="scanlines"></div>
 
-    <!-- MAIN WRAPPER: Added max-width for desktop to prevent stretching -->
     <div class="relative min-h-screen bg-cp-black border-x-0 md:border-x-2 border-cp-yellow md:mx-auto md:my-8 max-w-7xl shadow-[0_0_50px_rgba(252,238,10,0.1)]">
         
-        <!-- HEADER -->
         <header class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-cp-yellow/50 p-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-2 h-8 bg-cp-yellow animate-blink"></div>
@@ -140,7 +128,6 @@
                 </div>
             </div>
 
-            <!-- Desktop Navigation -->
             <nav class="hidden md:flex gap-8 items-center">
                 <a href="#bio" class="text-sm font-display text-gray-400 hover:text-cp-yellow transition-colors tracking-widest">BIO</a>
                 <a href="#gigs" class="text-sm font-display text-gray-400 hover:text-cp-blue transition-colors tracking-widest">GIGS</a>
@@ -153,30 +140,24 @@
             </a>
         </header>
 
-        <!-- HERO SECTION -->
         <section id="bio" class="p-4 pt-8 md:p-12 md:grid md:grid-cols-2 md:gap-12 md:items-center">
             
-            <!-- Left Column (Desktop) / Bottom (Mobile) -->
             <div class="order-2 md:order-1">
-                <!-- STATUS BADGE -->
                 <div class="inline-block bg-cp-red/20 border border-cp-red text-cp-red text-[10px] md:text-xs font-mono px-2 py-1 mb-4">
                     ● SYSTEM_ONLINE // OPEN FOR WORK
                 </div>
 
-                <!-- MAIN TITLE -->
                 <div class="mb-8">
                     <h2 class="font-display text-4xl md:text-6xl font-black text-white leading-none mb-1">WAREHOUSE</h2>
                     <h2 class="font-display text-4xl md:text-6xl font-black text-cp-blue leading-none glitch-text">SPECIALIST</h2>
                 </div>
 
-                <!-- BIO TEXT -->
                 <div class="border-l-2 border-cp-yellow pl-4 mb-8 md:max-w-lg">
                     <p class="font-body text-lg md:text-xl text-gray-300 leading-relaxed">
                         "Sorter gudang dengan <span class="text-cp-yellow font-bold">akurasi tinggi</span>. Siap menangani logistik dengan presisi mesin dan stamina cyborg."
                     </p>
                 </div>
 
-                <!-- ACTION BUTTONS -->
                 <div class="grid grid-cols-2 gap-3 mb-10 md:mb-0 md:max-w-xs">
                     <a href="https://wa.me/62895358351278" target="_blank" class="btn-cp">
                         <i data-lucide="phone" class="w-4 h-4 inline mr-1"></i> CALL
@@ -187,23 +168,19 @@
                 </div>
             </div>
 
-            <!-- Right Column (Desktop) / Top (Mobile) - PHOTO CARD -->
             <div class="order-1 md:order-2 mb-8 md:mb-0 flex justify-center md:justify-end">
                 <div class="relative w-full aspect-square max-w-sm bg-gray-900 border-2 border-cp-yellow group overflow-hidden shadow-[0_0_30px_rgba(252,238,10,0.1)]">
                     <img src="./foto.jpg" alt="Profile" class="w-full h-full object-cover object-top filter grayscale contrast-125 transition-all duration-500 group-hover:grayscale-0"
                         onerror="this.style.display='none'; document.getElementById('fallback').style.display='flex'">
                     
-                    <!-- Fallback Icon -->
                     <div id="fallback" class="hidden absolute inset-0 flex items-center justify-center flex-col text-cp-yellow">
                         <i data-lucide="user-x" class="w-12 h-12 mb-2"></i>
                         <span class="font-mono text-xs">IMG_NOT_FOUND</span>
                     </div>
 
-                    <!-- Overlays -->
                     <div class="absolute inset-0 bg-cp-yellow/10 mix-blend-overlay"></div>
                     <div class="absolute top-0 left-0 w-full h-0.5 bg-cp-blue/50 animate-[scan_3s_linear_infinite]"></div>
                     
-                    <!-- HUD Corner -->
                     <div class="absolute bottom-2 right-2 text-right">
                         <div class="text-[10px] font-mono text-cp-red bg-black/50 px-1">REC ● [LIVE]</div>
                     </div>
@@ -211,7 +188,6 @@
             </div>
         </section>
 
-        <!-- EXPERIENCE SECTION -->
         <section id="gigs" class="bg-gray-900/50 p-4 py-8 md:p-12 border-t border-cp-yellow/30">
             <div class="flex items-center gap-2 mb-6 md:mb-10">
                 <i data-lucide="briefcase" class="text-cp-yellow w-5 h-5 md:w-6 md:h-6"></i>
@@ -219,7 +195,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-                <!-- Job 1 -->
                 <div class="pl-4 border-l-2 border-gray-700 hover:border-cp-yellow transition-colors duration-300">
                     <div class="text-xs font-mono text-gray-500 mb-1">2020 - 2025</div>
                     <h4 class="font-display text-lg md:text-xl font-bold text-cp-yellow leading-tight mb-1">SORTER WAREHOUSE</h4>
@@ -232,7 +207,6 @@
                     </ul>
                 </div>
 
-                <!-- Job 2 -->
                 <div class="pl-4 border-l-2 border-gray-700 hover:border-cp-red transition-colors duration-300">
                     <div class="text-xs font-mono text-gray-500 mb-1">2016 - 2019</div>
                     <h4 class="font-display text-lg md:text-xl font-bold text-white leading-tight mb-1">JUNIOR REMEDIAL</h4>
@@ -247,7 +221,6 @@
             </div>
         </section>
 
-        <!-- SKILLS SECTION -->
         <section id="skills" class="p-4 py-8 md:p-12">
             <div class="flex items-center gap-2 mb-6 md:mb-10">
                 <i data-lucide="cpu" class="text-cp-blue w-5 h-5 md:w-6 md:h-6"></i>
@@ -255,7 +228,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-                <!-- Skill Bars -->
                 <div class="space-y-6">
                     <div>
                         <div class="flex justify-between text-xs md:text-sm font-mono text-gray-400 mb-1">
@@ -277,7 +249,6 @@
                     </div>
                 </div>
 
-                <!-- Attributes Tags -->
                 <div class="flex flex-wrap content-start gap-2 md:gap-3">
                     <span class="bg-cp-red/10 border border-cp-red text-cp-red px-3 py-1.5 text-[10px] md:text-xs font-mono font-bold hover:bg-cp-red hover:text-black cursor-crosshair transition-colors">PHYSICAL_ENDURANCE</span>
                     <span class="bg-cp-red/10 border border-cp-red text-cp-red px-3 py-1.5 text-[10px] md:text-xs font-mono font-bold hover:bg-cp-red hover:text-black cursor-crosshair transition-colors">K3_READY</span>
@@ -287,16 +258,13 @@
             </div>
         </section>
 
-        <!-- CRASH TERMINAL SECTION (NEW) -->
         <section id="debug" class="p-4 py-8 md:p-12 mb-20 md:mb-10 border-t border-cp-red/30">
             <div class="flex items-center gap-2 mb-6 md:mb-10">
                 <i data-lucide="terminal" class="text-cp-red w-5 h-5 md:w-6 md:h-6"></i>
                 <h3 class="font-display text-xl md:text-3xl font-bold text-white">SYSTEM_DEBUG</h3>
             </div>
 
-            <!-- Terminal Window -->
             <div class="w-full bg-black border-2 border-gray-800 rounded-sm overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] font-mono text-xs md:text-sm relative">
-                <!-- Terminal Header -->
                 <div class="bg-gray-900 border-b border-gray-800 p-2 flex gap-2 items-center">
                     <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
                     <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
@@ -304,13 +272,11 @@
                     <span class="text-gray-500 ml-2 text-[10px]">root@nightcity:~</span>
                 </div>
                 
-                <!-- Terminal Body -->
                 <div class="p-4 h-64 md:h-80 overflow-y-auto terminal-scroll relative" id="crash-terminal-body">
                     <div class="text-cp-green mb-1"><span class="text-cp-blue">root@nightcity:~$</span> <span id="typing-command"></span><span class="animate-blink bg-cp-green w-2 h-4 inline-block align-middle ml-1" id="cursor"></span></div>
                     <div id="terminal-output" class="space-y-1 mt-2"></div>
                 </div>
                 
-                <!-- Crash Overlay (Hidden Initially) -->
                 <div id="crash-overlay" class="absolute inset-0 bg-cp-red/10 hidden flex-col items-center justify-center backdrop-blur-sm z-10 p-4">
                     <div class="bg-black border-2 border-cp-red p-6 text-center shadow-[0_0_50px_rgba(255,0,60,0.3)] transform scale-0 transition-transform duration-300 max-w-sm" id="crash-box">
                         <i data-lucide="alert-triangle" class="w-12 h-12 text-cp-red mx-auto mb-4 animate-pulse"></i>
@@ -326,7 +292,6 @@
 
     </div>
 
-    <!-- BOTTOM NAV (MOBILE ONLY) -->
     <nav class="md:hidden fixed bottom-0 left-0 w-full bg-black border-t border-cp-yellow/50 z-50 flex justify-around py-3 pb-safe">
         <a href="#" onclick="window.scrollTo(0,0)" class="flex flex-col items-center gap-1 text-cp-yellow">
             <i data-lucide="user" class="w-5 h-5"></i>
@@ -345,7 +310,6 @@
     <script>
         lucide.createIcons();
 
-        // 1. Initial Boot Sequence
         const bootLines = [
             "BOOTING SYSTEM...",
             "LOADING MODULES...",
@@ -368,14 +332,12 @@
                     bootScreen.style.opacity = '0';
                     setTimeout(() => {
                         bootScreen.style.display = 'none';
-                        // Start crash terminal after boot is gone
                         setTimeout(runCrashTerminal, 1000); 
                     }, 500);
                 }, 800);
             }
         }
         
-        // 2. Crash Terminal Logic (Endless Loop)
         const crashReasons = [
             "RECRUITER_APPROVAL_REQUIRED",
             "OFFER_LETTER_NOT_FOUND",
@@ -394,7 +356,6 @@
             const crashBox = document.getElementById('crash-box');
             const crashReasonText = document.getElementById('crash-reason-text');
 
-            // Reset Terminal State
             commandEl.textContent = "";
             outputEl.innerHTML = "";
             cursorEl.classList.remove('hidden');
@@ -405,19 +366,17 @@
             
             let charIndex = 0;
 
-            // Typing Animation
             function typeCommand() {
                 if (charIndex < commandText.length) {
                     commandEl.textContent += commandText.charAt(charIndex);
                     charIndex++;
                     setTimeout(typeCommand, 50);
                 } else {
-                    cursorEl.classList.add('hidden'); // hide cursor after typing
+                    cursorEl.classList.add('hidden');
                     setTimeout(printLogs, 500);
                 }
             }
 
-            // Mock Installation Logs
             const logs = [
                 { text: "Reading package lists... Done", color: "text-gray-400" },
                 { text: "Building dependency tree... Done", color: "text-gray-400" },
@@ -436,14 +395,12 @@
                     div.className = log.color;
                     div.textContent = log.text;
                     outputEl.appendChild(div);
-                    // Scroll to bottom
                     const body = document.getElementById('crash-terminal-body');
                     body.scrollTop = body.scrollHeight;
                     
                     logIndex++;
                     setTimeout(printLogs, 400);
                 } else {
-                    // Start Progress Bar
                     setTimeout(showProgress, 500);
                 }
             }
@@ -456,7 +413,7 @@
                 let percent = 0;
                 const interval = setInterval(() => {
                     percent += Math.floor(Math.random() * 10) + 1;
-                    if (percent > 99) percent = 99; // Stuck at 99
+                    if (percent > 99) percent = 99;
                     
                     let bar = "[";
                     for(let i=0; i<20; i++) {
@@ -474,37 +431,31 @@
             }
 
             function triggerCrash() {
-                // Add error logs
                 const errDiv = document.createElement('div');
                 errDiv.className = "text-cp-red font-bold mt-2 animate-pulse";
                 errDiv.innerHTML = "ERR! INSTALLATION HALTED.<br>ERR! PERMISSION DENIED: User not yet employed.";
                 outputEl.appendChild(errDiv);
                 
-                // Update Reason dynamically
                 const currentReason = crashReasons[reasonIndex % crashReasons.length];
                 crashReasonText.textContent = "REASON: " + currentReason;
                 reasonIndex++;
 
-                // Show Overlay
                 setTimeout(() => {
                     crashOverlay.classList.remove('hidden');
                     crashOverlay.classList.add('flex');
-                    // Small delay for scale animation
                     setTimeout(() => {
                         crashBox.classList.remove('scale-0');
                         crashBox.classList.add('scale-100');
                     }, 50);
                 }, 1500);
 
-                // RESTART LOOP AFTER 5 SECONDS
                 setTimeout(runCrashTerminal, 5000);
             }
 
-            // Start typing
             typeCommand();
         }
 
         window.onload = runBootSequence;
     </script>
 </body>
-</html>
+</html>	
