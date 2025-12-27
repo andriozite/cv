@@ -191,8 +191,19 @@
                 APD_SYSTEM<span class="text-white">://</span>
             </div>
 
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-8 items-center">
+                <button onclick="scrollToSection('home')" class="text-sm font-mono tracking-widest text-slate-400 hover:text-white uppercase transition-colors hover:shadow-[0_0_10px_rgba(255,255,255,0.5)]">Home</button>
+                <button onclick="scrollToSection('about')" class="text-sm font-mono tracking-widest text-slate-400 hover:text-white uppercase transition-colors hover:shadow-[0_0_10px_rgba(255,255,255,0.5)]">Profile</button>
+                <button onclick="scrollToSection('experience')" class="text-sm font-mono tracking-widest text-slate-400 hover:text-white uppercase transition-colors hover:shadow-[0_0_10px_rgba(255,255,255,0.5)]">Logs</button>
+                
+                <a href="https://drive.google.com/file/d/1jl8wwET6B54OXkdFKx5XcPO_ZQFNXrDM/view?usp=drive_link" target="_blank" class="ml-4 px-6 py-2 border border-cyber-blue text-cyber-blue font-tech text-xs tracking-widest hover:bg-cyber-blue hover:text-black transition-all duration-300 clip-path-button inline-block text-center no-underline">
+                    DOWNLOAD_CV
+                </a>
+            </div>
+
             <!-- Mobile Menu Toggle -->
-            <button onclick="toggleMenu()" class="text-cyber-green p-2 border border-cyber-green/30 rounded bg-cyber-green/5 active:bg-cyber-green/20">
+            <button onclick="toggleMenu()" class="md:hidden text-cyber-green p-2 border border-cyber-green/30 rounded bg-cyber-green/5 active:bg-cyber-green/20">
                 <i data-lucide="terminal" class="w-6 h-6"></i>
             </button>
         </div>
@@ -202,9 +213,9 @@
              <button onclick="scrollToSection('home')" class="w-full text-left font-mono text-cyber-green hover:bg-cyber-green/10 p-3 border-l-2 border-transparent hover:border-cyber-green transition-all">> HOME_DIR</button>
              <button onclick="scrollToSection('about')" class="w-full text-left font-mono text-cyber-blue hover:bg-cyber-blue/10 p-3 border-l-2 border-transparent hover:border-cyber-blue transition-all">> READ_PROFILE</button>
              <button onclick="scrollToSection('experience')" class="w-full text-left font-mono text-cyber-purple hover:bg-cyber-purple/10 p-3 border-l-2 border-transparent hover:border-cyber-purple transition-all">> VIEW_LOGS</button>
-             <button onclick="window.print()" class="w-full text-center mt-4 py-3 bg-cyber-blue text-black font-bold font-tech tracking-widest clip-tech-chip">
+             <a href="https://drive.google.com/file/d/1jl8wwET6B54OXkdFKx5XcPO_ZQFNXrDM/view?usp=drive_link" target="_blank" class="block w-full text-center mt-4 py-3 bg-cyber-blue text-black font-bold font-tech tracking-widest clip-tech-chip no-underline">
                 DOWNLOAD_DATA
-             </button>
+             </a>
         </div>
     </nav>
 
