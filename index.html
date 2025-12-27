@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Andrian Permana Diharja | HACKER EDITION</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Outfit:wght@300;400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                        mono: ['Share Tech Mono', 'monospace'],
+                    },
+                    colors: {
+                        cyber: {
+                            black: '#02040a',
+                            dark: '#0B1121',
+                            blue: '#00F0FF',
+                            purple: '#bc13fe',
+                            green: '#0aff0a', // Hacker Green
+                        }
+                    },
+                    animation: {
+                        'spin-slow': 'spin 10s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-fast': 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #02040a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* --- HACKER AESTHETICS --- */
+        
+        /* Scanline CRT Effect */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            z-index: 90;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        /* Boot Screen */
+        #boot-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            font-family: 'Share Tech Mono', monospace;
+            color: #0aff0a;
+            text-shadow: 0 0 5px #0aff0a;
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* Glitch Effect Class */
+        .glitch-text {
+            position: relative;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00c1;
+            clip-path: inset(44% 0 61% 0);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 #00fff9;
+            clip-path: inset(50% 0 30% 0);
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(20% 0 80% 0); }
+            20% { clip-path: inset(60% 0 10% 0); }
+            40% { clip-path: inset(40% 0 50% 0); }
+            60% { clip-path: inset(80% 0 5% 0); }
+            80% { clip-path: inset(10% 0 70% 0); }
+            100% { clip-path: inset(30% 0 20% 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(10% 0 60% 0); }
+            20% { clip-path: inset(30% 0 10% 0); }
+            40% { clip-path: inset(70% 0 20% 0); }
+            60% { clip-path: inset(20% 0 50% 0); }
+            80% { clip-path: inset(50% 0 30% 0); }
+            100% { clip-path: inset(5% 0 80% 0); }
+        }
+
+        /* Tech Card & Accents */
+        .tech-card {
+            background: rgba(11, 17, 33, 0.8);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Mobile Touch Feedback */
+        .tech-card:active {
+            border-color: #0aff0a;
+            transform: scale(0.98);
+        }
+
+        .corner-bracket {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #00F0FF;
+            transition: all 0.3s;
+            opacity: 0.6;
+        }
+        .tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+        .tr { top: -1px; right: -1px; border-left: none; border-bottom: none; border-color: #bc13fe; }
+        .bl { bottom: -1px; left: -1px; border-right: none; border-top: none; border-color: #bc13fe; }
+
+        .clip-tech-chip {
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #00F0FF; }
+    </style>
+</head>
+<body class="selection:bg-cyber-green selection:text-black">
+
+    <!-- BOOT SCREEN (The Hacker Intro) -->
+    <div id="boot-screen">
+        <div id="terminal-content" class="text-sm md:text-base leading-relaxed mb-4"></div>
+        <div class="h-1 w-full bg-cyber-green animate-pulse"></div>
+        <p class="text-xs text-cyber-green/50 mt-2 font-mono">SYSTEM_INITIALIZATION_V.2.0.25</p>
+    </div>
+
+    <!-- Retro CRT Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Background Grid -->
+    <div class="fixed inset-0 z-0 bg-[linear-gradient(rgba(0,240,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,240,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_30%,transparent_100%)] pointer-events-none"></div>
+
+    <!-- HUD Navbar -->
+    <nav class="fixed top-0 w-full z-50 border-b border-cyber-blue/20 bg-cyber-black/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="font-tech text-lg font-bold tracking-widest text-cyber-blue animate-pulse cursor-pointer" onclick="location.reload()">
+                APD_SYSTEM<span class="text-white">://</span>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMenu()" class="text-cyber-green p-2 border border-cyber-green/30 rounded bg-cyber-green/5 active:bg-cyber-green/20">
+                <i data-lucide="terminal" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-cyber-black/95 border-b border-cyber-green/50 p-4 space-y-2 shadow-[0_10px_50px_rgba(0,255,0,0.1)] z-50 backdrop-blur-xl">
+             <button onclick="scrollToSection('home')" class="w-full text-left font-mono text-cyber-green hover:bg-cyber-green/10 p-3 border-l-2 border-transparent hover:border-cyber-green transition-all">> HOME_DIR</button>
+             <button onclick="scrollToSection('about')" class="w-full text-left font-mono text-cyber-blue hover:bg-cyber-blue/10 p-3 border-l-2 border-transparent hover:border-cyber-blue transition-all">> READ_PROFILE</button>
+             <button onclick="scrollToSection('experience')" class="w-full text-left font-mono text-cyber-purple hover:bg-cyber-purple/10 p-3 border-l-2 border-transparent hover:border-cyber-purple transition-all">> VIEW_LOGS</button>
+             <button onclick="window.print()" class="w-full text-center mt-4 py-3 bg-cyber-blue text-black font-bold font-tech tracking-widest clip-tech-chip">
+                DOWNLOAD_DATA
+             </button>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-20 pb-20">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="min-h-[90vh] flex items-center relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 w-full flex flex-col md:grid md:grid-cols-2 gap-10 items-center">
+                
+                <!-- Mobile First: Photo on Top for better impact -->
+                <div class="order-1 flex justify-center relative mt-6 md:mt-0">
+                    <div class="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
+                        <!-- Spinning HUD Rings -->
+                        <div class="absolute inset-[-10px] border border-dashed border-cyber-green/30 rounded-full animate-spin-slow"></div>
+                        <div class="absolute inset-[-20px] border border-dotted border-cyber-blue/20 rounded-full animate-spin-slow" style="animation-direction: reverse; animation-duration: 15s;"></div>
+                        
+                        <!-- Photo Container -->
+                        <div class="absolute inset-0 bg-cyber-dark clip-tech-chip overflow-hidden border-2 border-cyber-green group shadow-[0_0_30px_rgba(10,255,10,0.15)]">
+                            <!-- Image Fix: Forced Centering -->
+                            <img src="./foto.jpg" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 filter grayscale group-hover:grayscale-0"
+                                 style="object-position: center 20% !important;"
+                                 alt="Andrian User"
+                                 onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex'">
+                            
+                            <!-- Scanner Line Animation over photo -->
+                            <div class="absolute top-0 left-0 w-full h-1 bg-cyber-green/50 shadow-[0_0_10px_#0aff0a] animate-[scan_3s_linear_infinite]"></div>
+
+                            <div id="avatar-fallback" class="hidden w-full h-full flex-col items-center justify-center bg-slate-900 text-cyber-green">
+                                <i data-lucide="user-circle" class="w-20 h-20 mb-2"></i>
+                                <span class="text-xs font-mono blink">IMG_NOT_FOUND</span>
+                            </div>
+                        </div>
+
+                        <!-- Badge -->
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-black border border-cyber-green text-cyber-green px-4 py-1 text-xs font-mono tracking-widest shadow-[0_0_10px_rgba(10,255,10,0.5)]">
+                            STATUS: ONLINE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="order-2 text-center md:text-left space-y-6">
+                    <div class="inline-block border border-cyber-blue/30 bg-cyber-blue/5 px-3 py-1 rounded-sm">
+                        <span class="text-cyber-blue font-mono text-xs animate-pulse">● SYSTEM_READY</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h2 class="text-sm md:text-xl text-slate-400 font-mono">> IDENTITY_VERIFIED:</h2>
+                        <!-- Glitch Effect on Name -->
+                        <h1 class="text-4xl md:text-7xl font-bold font-tech text-white leading-tight glitch-text" data-text="ANDRIAN PERMANA">
+                            ANDRIAN<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-green to-cyber-blue">PERMANA</span>
+                        </h1>
+                        <p class="text-base md:text-2xl text-slate-400 font-mono pt-2">
+                            [ <span class="text-cyber-purple">WAREHOUSE_OPS</span> ] SPECIALIST
+                        </p>
+                    </div>
+
+                    <p class="text-slate-400 max-w-lg mx-auto md:mx-0 font-mono text-xs md:text-sm leading-relaxed border-l-2 border-cyber-green/50 pl-4 text-left">
+                        "Precision is key. Executing warehouse logistics with high-level accuracy and safety protocols."
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <a href="https://wa.me/62895358351278" target="_blank" class="col-span-1 bg-cyber-green/10 border border-cyber-green text-cyber-green font-tech text-sm py-3 flex items-center justify-center gap-2 hover:bg-cyber-green hover:text-black transition-all active:scale-95">
+                            <i data-lucide="message-square" class="w-4 h-4"></i> WHATSAPP
+                        </a>
+                        <a href="mailto:andrianpermana187@gmail.com" class="col-span-1 border border-slate-700 text-slate-300 font-tech text-sm py-3 flex items-center justify-center gap-2 hover:border-cyber-blue hover:text-cyber-blue transition-all active:scale-95">
+                            <i data-lucide="mail" class="w-4 h-4"></i> EMAIL
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROFILE DATA -->
+        <section id="about" class="py-10 px-6">
+            <div class="max-w-4xl mx-auto tech-card p-6 md:p-8 rounded-none relative">
+                <!-- Tech Corners -->
+                <div class="corner-bracket tl"></div>
+                <div class="corner-bracket tr"></div>
+                <div class="corner-bracket bl"></div>
+                <div class="corner-bracket br"></div>
+
+                <div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+                    <i data-lucide="terminal" class="text-cyber-green w-4 h-4"></i>
+                    <span class="font-mono text-xs text-cyber-green">root@system:~/profile_data</span>
+                </div>
+                
+                <div class="font-mono text-xs md:text-sm text-slate-300 space-y-2 overflow-x-auto">
+                    <p><span class="text-cyber-purple">const</span> <span class="text-cyber-blue">Target</span> = {</p>
+                    <p class="pl-4">Role: <span class="text-yellow-400">"Warehouse Assistant"</span>,</p>
+                    <p class="pl-4">Attributes: [<span class="text-green-400">"Teliti"</span>, <span class="text-green-400">"Cekatan"</span>, <span class="text-green-400">"Fisik_Prima"</span>],</p>
+                    <p class="pl-4">Mission: <span class="text-slate-400">"Ensure delivery accuracy & K3 safety protocols."</span>,</p>
+                    <p class="pl-4">Status: <span class="text-cyber-green blink">AVAILABLE_FOR_HIRE</span></p>
+                    <p>}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE LOGS -->
+        <section id="experience" class="py-10 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-2 h-8 bg-cyber-purple"></div>
+                    <h2 class="text-2xl font-tech text-white">MISSION_LOGS</h2>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Exp 1 -->
+                    <div class="tech-card p-5 group hover:border-cyber-green transition-colors">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyber-green">Sorter Warehouse</h3>
+                            <span class="text-[10px] font-mono border border-slate-700 px-2 py-1 text-slate-400">2020-2025</span>
+                        </div>
+                        <div class="text-cyber-blue text-xs font-mono mb-4 flex items-center gap-1">
+                            <i data-lucide="building" class="w-3 h-3"></i> PT Lastana Express Indonesia
+                        </div>
+                        <ul class="space-y-2 text-xs md:text-sm font-mono text-slate-400">
+                            <li class="flex gap-2"><span class="text-cyber-green">></span> Inbound/Outbound Sorting Algorithm</li>
+                            <li class="flex gap-2"><span class="text-cyber-green">></span> Barcode Scanning & Real-time Tracking</li>
+                            <li class="flex gap-2"><span class="text-cyber-green">></span> 5R & K3 Implementation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Exp 2 -->
+                    <div class="tech-card p-5 group hover:border-cyber-purple transition-colors">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyber-purple">Junior Remedial Field</h3>
+                            <span class="text-[10px] font-mono border border-slate-700 px-2 py-1 text-slate-400">2016-2019</span>
+                        </div>
+                        <div class="text-cyber-purple text-xs font-mono mb-4 flex items-center gap-1">
+                            <i data-lucide="building" class="w-3 h-3"></i> PT Federal International Finance
+                        </div>
+                        <ul class="space-y-2 text-xs md:text-sm font-mono text-slate-400">
+                            <li class="flex gap-2"><span class="text-cyber-purple">></span> Payment Negotiation Protocol</li>
+                            <li class="flex gap-2"><span class="text-cyber-purple">></span> Data Analysis & Validation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILL MATRIX -->
+        <section id="skills" class="py-10 px-6 mb-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-3 mb-8 justify-end">
+                    <h2 class="text-2xl font-tech text-white">SKILL_MATRIX</h2>
+                    <div class="w-2 h-8 bg-cyber-blue"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="tech-card p-4">
+                        <h4 class="text-cyber-blue font-mono text-xs mb-3 border-b border-slate-800 pb-1">HARDWARE_SKILLS</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] bg-cyber-blue/10 text-cyber-blue px-2 py-1 border border-cyber-blue/30">Ms. Excel</span>
+                            <span class="text-[10px] bg-cyber-blue/10 text-cyber-blue px-2 py-1 border border-cyber-blue/30">Sorting</span>
+                            <span class="text-[10px] bg-cyber-blue/10 text-cyber-blue px-2 py-1 border border-cyber-blue/30">Loading</span>
+                        </div>
+                    </div>
+                    <div class="tech-card p-4">
+                        <h4 class="text-cyber-purple font-mono text-xs mb-3 border-b border-slate-800 pb-1">SOFTWARE_SKILLS</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] bg-cyber-purple/10 text-cyber-purple px-2 py-1 border border-cyber-purple/30">K3 Safety</span>
+                            <span class="text-[10px] bg-cyber-purple/10 text-cyber-purple px-2 py-1 border border-cyber-purple/30">Discipline</span>
+                            <span class="text-[10px] bg-cyber-purple/10 text-cyber-purple px-2 py-1 border border-cyber-purple/30">Time Mgmt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-8 bg-black border-t border-slate-900 text-center relative">
+            <p class="font-mono text-[10px] text-slate-600">SYSTEM_ID: APD-2025 // ENCRYPTED CONNECTION</p>
+        </footer>
+
+    </main>
+
+    <style>
+        .blink { animation: blink-anim 1s infinite; }
+        @keyframes blink-anim { 50% { opacity: 0; } }
+        
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+
+    <script>
+        lucide.createIcons();
+
+        // Boot Sequence Animation
+        const bootScreen = document.getElementById('boot-screen');
+        const terminal = document.getElementById('terminal-content');
+        const lines = [
+            "> INITIALIZING_KERNEL...",
+            "> LOADING_MODULES: [ CPU ] [ MEM ] [ NETWORK ]",
+            "> BYPASSING_FIREWALL... SUCCESS",
+            "> DECRYPTING_USER_PROFILE: ANDRIAN_PERMANA",
+            "> ACCESS_GRANTED.",
+            "> WELCOME_USER."
+        ];
+
+        let lineIndex = 0;
+
+        function typeLine() {
+            if (lineIndex < lines.length) {
+                const p = document.createElement('p');
+                p.textContent = lines[lineIndex];
+                p.className = "mb-1";
+                terminal.appendChild(p);
+                lineIndex++;
+                setTimeout(typeLine, 300); // Speed of typing
+            } else {
+                setTimeout(() => {
+                    bootScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        bootScreen.style.display = 'none';
+                    }, 500);
+                }, 800);
+            }
+        }
+
+        // Start Boot Sequence on Load
+        window.addEventListener('load', () => {
+            setTimeout(typeLine, 500);
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        function scrollToSection(id) {
+            document.getElementById('mobile-menu').classList.add('hidden');
+            const element = document.getElementById(id);
+            if (element) {
+                const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
+        }
+    </script>
+</body>
+</html>
