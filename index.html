@@ -292,10 +292,11 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         const VIDEO_ID = 'rH1zaDKsNjY';
-        const START_DESTRUCTION_TIME = 6000;
-        const INTENSE_PHASE_TIME = 14000;
-        const CRITICAL_PHASE_TIME = 20000;
-        const FULL_DARKNESS_TIME = 24000;
+        // Updated Timeline for 60 seconds destruction session
+        const START_DESTRUCTION_TIME = 6000;    // Starts at 6s
+        const INTENSE_PHASE_TIME = 25000;       // Intense phase starts at 25s
+        const CRITICAL_PHASE_TIME = 45000;      // Critical phase starts at 45s
+        const FULL_DARKNESS_TIME = 66000;       // Darkness at 66s (Total destruction duration ~60s)
 
         let player;
         let animationStarted = false;
@@ -381,7 +382,7 @@
                 scanlines.style.opacity = progress * 0.8;
                 vignette.style.opacity = progress;
 
-                // --- PHASE 1: SUBTLE DECAY (6s - 14s) ---
+                // --- PHASE 1: SUBTLE DECAY (6s - 25s) ---
                 if (elapsed > START_DESTRUCTION_TIME && elapsed < INTENSE_PHASE_TIME) {
                     const gray = progress * 80;
                     const contrast = 100 + (progress * 50);
@@ -397,7 +398,7 @@
                     }
                 }
 
-                // --- PHASE 2: INTENSE GRIT (14s - 20s) ---
+                // --- PHASE 2: INTENSE GRIT (25s - 45s) ---
                 else if (elapsed >= INTENSE_PHASE_TIME && elapsed < CRITICAL_PHASE_TIME) {
                     content.classList.add('shaking'); // Activates the slow sway
                     content.classList.add('glitch-text-effect');
@@ -416,7 +417,7 @@
                     }
                 }
 
-                // --- PHASE 3: CRITICAL MELTDOWN (20s - 24s) ---
+                // --- PHASE 3: CRITICAL MELTDOWN (45s - 66s) ---
                 else if (elapsed >= CRITICAL_PHASE_TIME && elapsed < FULL_DARKNESS_TIME) {
                      content.classList.remove('shaking');
                      content.classList.add('melting');
